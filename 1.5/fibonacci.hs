@@ -22,5 +22,9 @@ F−1=1,F−2=−1,…,F−10=−55,…F−1=1,F−2=−1,…,F−10=−55,…
 fibonacci :: Integer -> Integer
 fibonacci n | n == 0 = 0
             | n == 1 = 1
-            | n > 0 = fibonacci (n - 1) + fibonacci (n - 2)
+            | n > 0 = accHelper n (0,1)
             | n < 0 = ((-1) ^ ((abs n) +1)) * fibonacci(abs n)
+
+
+accHelper n (a, b) | n==0 = a
+                   | otherwise = accHelper (n-1) (b, a+b)
